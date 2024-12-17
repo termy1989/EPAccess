@@ -1,0 +1,5 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/">
+<file alias="ico.rc">C:/Projects/EPAccessManager/ico.rc</file>
+</qresource>
+</RCC>

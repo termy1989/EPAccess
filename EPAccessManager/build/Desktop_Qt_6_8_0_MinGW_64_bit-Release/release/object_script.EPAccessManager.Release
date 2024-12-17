@@ -1,0 +1,12 @@
+release/accessdialog.o
+release/logindialog.o
+release/main.o
+release/mainwindow.o
+release/progressdialog.o
+release/tcphandler.o
+release/qrc_qmake_qmake_immediate.o
+release/moc_accessdialog.o
+release/moc_logindialog.o
+release/moc_mainwindow.o
+release/moc_progressdialog.o
+release/moc_tcphandler.o

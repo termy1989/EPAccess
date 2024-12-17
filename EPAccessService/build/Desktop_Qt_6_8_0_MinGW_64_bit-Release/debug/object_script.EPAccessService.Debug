@@ -1,0 +1,11 @@
+debug/accesshandler.o
+debug/connector.o
+debug/main.o
+debug/qldap.o
+debug/qldapuser.o
+debug/qservice.o
+debug/tcphandler.o
+debug/moc_accesshandler.o
+debug/moc_connector.o
+debug/moc_qservice.o
+debug/moc_tcphandler.o
