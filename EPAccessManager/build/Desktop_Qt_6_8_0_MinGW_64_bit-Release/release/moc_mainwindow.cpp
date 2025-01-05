@@ -84,8 +84,8 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void, QMetaType::Bool,    2,
     QMetaType::Void, 0x80000000 | 4,    2,
     QMetaType::Void, 0x80000000 | 6,    2,
-    QMetaType::Void, QMetaType::Int, QMetaType::QString,    2,    2,
-    QMetaType::Void, QMetaType::Int,    2,
+    QMetaType::Void, QMetaType::UChar, QMetaType::QString,    2,    2,
+    QMetaType::Void, QMetaType::UChar,    2,
     QMetaType::Void, QMetaType::Bool,    2,
     QMetaType::Void, QMetaType::QString,    2,
     QMetaType::Void,
@@ -115,11 +115,11 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<QStandardItemModel *, std::false_type>,
         // method 'slotEditAccess'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<quint8, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         // method 'slotDelAccess'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<quint8, std::false_type>,
         // method 'slotOperationReady'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<bool, std::false_type>,
@@ -145,8 +145,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->slotClickButton((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
         case 1: _t->slotAuth((*reinterpret_cast< std::add_pointer_t<Auth>>(_a[1]))); break;
         case 2: _t->slotUpdateUserList((*reinterpret_cast< std::add_pointer_t<QStandardItemModel*>>(_a[1]))); break;
-        case 3: _t->slotEditAccess((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
-        case 4: _t->slotDelAccess((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 3: _t->slotEditAccess((*reinterpret_cast< std::add_pointer_t<quint8>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 4: _t->slotDelAccess((*reinterpret_cast< std::add_pointer_t<quint8>>(_a[1]))); break;
         case 5: _t->slotOperationReady((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
         case 6: _t->slotConnectError((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 7: _t->on_pushButton_search_clicked(); break;

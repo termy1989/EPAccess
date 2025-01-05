@@ -18,10 +18,12 @@ AccessDialog::~AccessDialog() {
 }
 
 // установка списка аттрибутов
-void AccessDialog::slotSetAttributes(QStringList list) {
+void AccessDialog::slotSetAttributes(const QStringList &list) {
 
     QStringList itemList;
     QString str = "";
+
+    // составление списка аттрибутов (первый элемент лишний)
     for (int i = 0; i < list.size(); i++) {
         str = QString::number(i)
                          + " - "
@@ -30,19 +32,21 @@ void AccessDialog::slotSetAttributes(QStringList list) {
             itemList.push_back(str);
     }
     itemList.removeAt(0);
+
+    // обновление combobox
     ui->comboBox_access->clear();
     if (!itemList.isEmpty()) {
         ui->comboBox_access->addItems(itemList);
         ui->comboBox_access->setCurrentIndex(0);
     }
-    else {
+    else
         this->setEnabled(false);
-    }
 }
 
-//
+// отправка настроек доступа основному окну
 void AccessDialog::slotSendInfo() {
 
+    // установка постоянного доступа
     if (ui->checkBox_vip->isChecked())
         emit signalOk(ui->comboBox_access->currentText()
                                                 .split(" ")
@@ -50,11 +54,15 @@ void AccessDialog::slotSendInfo() {
                                                 .toInt(), "vip");
 
     else {
+
+        // проверка установленной даты на корректность
         if (ui->dateEdit_access->date() <= QDate::currentDate()) {
             QMessageBox::critical(this, "Ошибка", "Введите корректную дату!");
             this->show();
         }
         else
+
+            // отправка настроек
             emit signalOk(ui->comboBox_access->currentText()
                                                     .split(" ")
                                                     .at(0)
@@ -64,7 +72,7 @@ void AccessDialog::slotSendInfo() {
     }
 }
 
-//
+// нажатие отметки постоянного доступа
 void AccessDialog::slotCheckBoxClicked(bool clicked) {
     if (clicked)
         ui->dateEdit_access->setEnabled(false);
@@ -72,9 +80,8 @@ void AccessDialog::slotCheckBoxClicked(bool clicked) {
         ui->dateEdit_access->setEnabled(true);
 }
 
-//
-void AccessDialog::on_pushButton_off_clicked()
-{
+// нажатие на кнопку отключение доступа
+void AccessDialog::on_pushButton_off_clicked() {
     if (QMessageBox::warning(nullptr, tr("Предупреждение"),
                              tr("Вы уверены, что хотите отключить "
                                 "доступ у выбранных пользователей?"),
@@ -86,6 +93,5 @@ void AccessDialog::on_pushButton_off_clicked()
                                                 .at(0)
                                                 .toInt());
     }
-    //else show();
 }
 

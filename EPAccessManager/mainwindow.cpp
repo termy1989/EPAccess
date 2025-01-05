@@ -38,17 +38,19 @@ MainWindow::MainWindow(QWidget *parent)
                         this, [=](){ui->centralwidget->setEnabled(true);});
     connect(mAccessDialog, &QDialog::rejected,
                         this, [=](){ui->centralwidget->setEnabled(true);});
-    connect(mAccessDialog, SIGNAL(signalOk(int,QString)),
-                        this, SLOT(slotEditAccess(int,QString)));
-    connect(mAccessDialog, SIGNAL(signalDel(int)),
-                        this, SLOT(slotDelAccess(int)));
+    connect(mAccessDialog, SIGNAL(signalOk(quint8,QString)),
+                        this, SLOT(slotEditAccess(quint8,QString)));
+    connect(mAccessDialog, SIGNAL(signalDel(quint8)),
+                        this, SLOT(slotDelAccess(quint8)));
     connect(mTCPhandler, SIGNAL(signalUpdateAttributes(QStringList)),
                         mAccessDialog, SLOT(slotSetAttributes(QStringList)));
 
     // инициализация окна прогресса
     mProgressDialog = new ProgressDialog(this);
-    connect(mTCPhandler, SIGNAL(signalUpdateProgress(int,int,QString,QString)),
-                mProgressDialog, SLOT(slotUpdateStatus(int,int,QString,QString)));
+    connect(mTCPhandler,
+            SIGNAL(signalUpdateProgress(quint16,quint16,QString,QString)),
+                mProgressDialog,
+            SLOT(slotUpdateStatus(quint16,quint16,QString,QString)));
     connect(mTCPhandler, &TCPhandler::signalUpdateProgress,
             this, [=](){ui->centralwidget->setEnabled(false);});
 
@@ -103,6 +105,8 @@ void MainWindow::slotClickButton(bool access)
                                          .data()
                                          .toString());
                 }
+
+                // отправка списка пользователей на сервер
                 mTCPhandler->sendResetReq(users);
             }
             else ui->centralwidget->setEnabled(true);
@@ -158,8 +162,8 @@ void MainWindow::slotUpdateUserList(QStandardItemModel *model) {
     ui->centralwidget->setEnabled(true);
 }
 
-//
-void MainWindow::slotEditAccess(int attr, QString date) {
+// отправка на сервер настроек доступа
+void MainWindow::slotEditAccess(quint8 attr, QString date) {
 
     // выбранные пользователи
     QModelIndexList indexes = ui->tableView_users
@@ -181,8 +185,8 @@ void MainWindow::slotEditAccess(int attr, QString date) {
     mTCPhandler->sendEditAccessReq(attr, users);
 }
 
-//
-void MainWindow::slotDelAccess(int attr) {
+// отправка запроса на отключение доступа
+void MainWindow::slotDelAccess(quint8 attr) {
 
     // выбранные пользователи
     QModelIndexList indexes = ui->tableView_users
@@ -193,17 +197,19 @@ void MainWindow::slotDelAccess(int attr) {
     QStringList users;
     for (int i = 0; i < indexes.count(); ++i) {
 
-        // составление списка имен пользователей на
+        // составление списка имен пользователей на сервер
         if (indexes.at(i).column() == 0)
             users.append(indexes.at(i)
                              .siblingAtColumn(0)
                              .data()
                              .toString());
     }
+
+    // отправка списка пользователей на сервер
     mTCPhandler->sendDelAccessReq(attr, users);
 }
 
-//
+// завершение операции с доступом или паролем
 void MainWindow::slotOperationReady(bool resetPWD) {
     ui->centralwidget->setEnabled(true);
     mProgressDialog->close();
@@ -214,15 +220,15 @@ void MainWindow::slotOperationReady(bool resetPWD) {
 
 // ошибки соединения
 void MainWindow::slotConnectError(QString errorMsg) {
-    mAccessDialog->close();                                         // закрытие диалогового окна доступа
-    mProgressDialog->close();                                       //
-    mProgressDialog->slotUpdateStatus(100, 100, "error", "error");
-    ui->tableView_users->setModel(NULL);                            // обнуление таблицы
-    ui->lineEdit_search->clear();                                   // очистка поля поиска
-    ui->statusbar->showMessage("Отключено");                        // статус приложения "Отключено"
-    ui->centralwidget->setEnabled(false);                           // блокировка основного окна приложения
-    QMessageBox::critical(this, "Ошибка", errorMsg);                // сообщение об ошибке
-    mLoginDialog->show();                                           // вывод диалогового окна авторизации
+    mAccessDialog->close();                                             // закрытие диалогового окна доступа
+    mProgressDialog->close();                                           // закрытие диалогового окна прогресса
+    mProgressDialog->slotUpdateStatus(100, 100, "error", "error");      // закрытие диалогового окна прогресса - 2
+    ui->tableView_users->setModel(NULL);                                // обнуление таблицы
+    ui->lineEdit_search->clear();                                       // очистка поля поиска
+    ui->statusbar->showMessage("Отключено");                            // статус приложения "Отключено"
+    ui->centralwidget->setEnabled(false);                               // блокировка основного окна приложения
+    QMessageBox::critical(this, "Ошибка", errorMsg);                    // сообщение об ошибке
+    mLoginDialog->show();                                               // вывод диалогового окна авторизации
 }
 
 // кнопка поиска

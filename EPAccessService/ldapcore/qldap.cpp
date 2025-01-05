@@ -288,11 +288,6 @@ int QLdap::userSearchByLogin(const QString &login) {
     return this->userSearch("(sAMAccountName=" + login + ")");
 }
 
-// инициализация результата поиска, указатель передается извне
-void QLdap::setSearchResult(QLdapEntryList *value) {
-    mSearchResults = value;
-}
-
 // добавление пользователя в группу
 int QLdap::addUserToGroup(const QString &username, const QString &groupname) {
     QProcess p;
@@ -401,8 +396,7 @@ int QLdap::setAttributeToUser(const QString &username, const int attr, const QSt
 }
 
 // сброс пароля
-int QLdap::resetPassword(const QString &username)
-{
+int QLdap::resetPassword(const QString &username) {
     // процесс powershell
     QProcess p;
     QString path = "C:/Windows/system32/WindowsPowerShell/v1.0/powershell.exe";
@@ -472,7 +466,7 @@ int QLdap::resetPassword(const QString &username)
                     out = p.readAllStandardOutput().trimmed();
                 }
 
-                //
+                // завершение сброса пароля
                 if (QString(out).isEmpty()) {
                     qDebug() << "Requirement to edit default password for user" << username;
                     qInfo() << "Complete reset password for user" << username;
@@ -501,34 +495,37 @@ int QLdap::resetPassword(const QString &username)
 }
 
 // получение результатов поиска
-QLdapEntryList *QLdap::getResult() const {
+QLdapEntryList *QLdap::getSearchResult() const {
     return mSearchResults;
 }
 
+// инициализация результата поиска, указатель передается извне
+void QLdap::setSearchResult(QLdapEntryList *value) {
+    mSearchResults = value;
+}
+
 // получение логина
-QString QLdap::getLogin()
-{
+QString QLdap::getLogin() const {
     return mUsername;
 }
 
 // получение пароля
-QString QLdap::getPassword()
-{
+QString QLdap::getPassword() const {
     return mPassword;
 }
 
 // получение времени проверки доступа
-QString QLdap::getCheckingTime() {
+QString QLdap::getCheckingTime() const {
     return mCheckingTime;
 }
 
 // получение порта для подключения
-int QLdap::getClientPort() {
+int QLdap::getClientPort() const {
     return mClientPort;
 }
 
 // получение пары атрибут - группы
-QPair<QString, QStringList> QLdap::getAttributes(const int index) {
+QPair<QString, QStringList> QLdap::getAttributes(const int index) const {
     return mAttributes[index - 1];
 }
 
