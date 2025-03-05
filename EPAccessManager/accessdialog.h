@@ -18,7 +18,7 @@ public:
     ~AccessDialog();                                        // деструктор
 
 signals:
-    void signalOk(quint8, QString);                         // отправка сигнала с установленной датой
+    void signalOk(quint8, const QString&);                  // отправка сигнала с установленной датой
     void signalDel(quint8);                                 // отправка сигнала об отключении доступа
 
 private slots:

@@ -7,7 +7,9 @@
 #include <QFile>
 #include <QMessageBox>
 #include <fstream>
-#define PATH "/AppData/Local/EPAccessManager/auth.dat"
+#include "proxydialog.h"
+#define PATH_WIN "/AppData/Local/EPAccessManager/auth.dat"
+#define PATH_LINUX "/.local/share/EPAccessManager/auth.dat"
 
 namespace Ui {
 class LoginDialog;
@@ -18,6 +20,7 @@ struct Auth {
     std::string url;                                    // адрес сервера
     std::string login;                                  // логин
     std::string password;                               // пароль
+    Proxy proxy;                                        // настройка прокси
 };
 
 // класс окна авторизации
@@ -33,13 +36,16 @@ public:
     bool createLocalDirectory();                        // создание каталога хранения структуры авторизации
 
 signals:
-    void signalOk(Auth);                                // отправка сигнала со структурой авторизации
+    void signalOk(const Auth&);                         // отправка сигнала со структурой авторизации
 
 private slots:
     void SendInfo();                                    // обработчик нажатия ОК
+    void setProxy(const Proxy&);                        // установка настроек прокси
+    void on_proxyButton_clicked();                      // обработчик нажатия на кнопку настройки прокси-соединения
 
 private:
-    Ui::LoginDialog *ui = nullptr;                      // экземпляр диалогового окна
+    Ui::LoginDialog *ui = nullptr;                      // экземпляр диалогового окна авторизации
+    ProxyDialog *mProxyDialog = nullptr;                // экземпляр диалогового окна настройки прокси
     Auth mAuth;                                         // экземпляр структуры авторизации
 };
 

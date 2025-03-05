@@ -17,8 +17,8 @@ ProgressDialog::~ProgressDialog() {
 // обновление статуса работы
 void ProgressDialog::slotUpdateStatus(quint16 progress,
                                         quint16 sum,
-                                        QString user,
-                                        QString stage) {
+                                        const QString &user,
+                                        const QString &stage) {
 
     // запуск окна
     if (!isStarted) {

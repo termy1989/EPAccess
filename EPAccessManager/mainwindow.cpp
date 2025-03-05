@@ -24,13 +24,13 @@ MainWindow::MainWindow(QWidget *parent)
                         this, SLOT(slotUpdateUserList(QStandardItemModel*)));
     connect(mTCPhandler, SIGNAL(signalOperationReady(bool)),
                         this, SLOT(slotOperationReady(bool)));
-    connect(mTCPhandler, SIGNAL(signalConnectError(QString)),
-                        this, SLOT(slotConnectError(QString)));
+    connect(mTCPhandler, SIGNAL(signalConnectError(const QString&)),
+                        this, SLOT(slotConnectError(const QString&)));
 
     // инициализация окна авторизации
     mLoginDialog = new LoginDialog(this);
     connect(mLoginDialog, &QDialog::rejected, this, [=](){exit(0);});
-    connect(mLoginDialog, SIGNAL(signalOk(Auth)), this, SLOT(slotAuth(Auth)));
+    connect(mLoginDialog, SIGNAL(signalOk(const Auth&)), this, SLOT(slotAuth(const Auth&)));
 
     // инициализация окна установки доступа
     mAccessDialog = new AccessDialog(this);
@@ -38,19 +38,19 @@ MainWindow::MainWindow(QWidget *parent)
                         this, [=](){ui->centralwidget->setEnabled(true);});
     connect(mAccessDialog, &QDialog::rejected,
                         this, [=](){ui->centralwidget->setEnabled(true);});
-    connect(mAccessDialog, SIGNAL(signalOk(quint8,QString)),
-                        this, SLOT(slotEditAccess(quint8,QString)));
+    connect(mAccessDialog, SIGNAL(signalOk(quint8,const QString&)),
+                        this, SLOT(slotEditAccess(quint8,const QString&)));
     connect(mAccessDialog, SIGNAL(signalDel(quint8)),
                         this, SLOT(slotDelAccess(quint8)));
-    connect(mTCPhandler, SIGNAL(signalUpdateAttributes(QStringList)),
-                        mAccessDialog, SLOT(slotSetAttributes(QStringList)));
+    connect(mTCPhandler, SIGNAL(signalUpdateAttributes(const QStringList&)),
+                        mAccessDialog, SLOT(slotSetAttributes(const QStringList&)));
 
     // инициализация окна прогресса
     mProgressDialog = new ProgressDialog(this);
     connect(mTCPhandler,
-            SIGNAL(signalUpdateProgress(quint16,quint16,QString,QString)),
+            SIGNAL(signalUpdateProgress(quint16,quint16,const QString&,const QString&)),
                 mProgressDialog,
-            SLOT(slotUpdateStatus(quint16,quint16,QString,QString)));
+            SLOT(slotUpdateStatus(quint16,quint16,const QString&,const QString&)));
     connect(mTCPhandler, &TCPhandler::signalUpdateProgress,
             this, [=](){ui->centralwidget->setEnabled(false);});
 
@@ -119,7 +119,7 @@ void MainWindow::slotClickButton(bool access)
 }
 
 // авторизация на сервере
-void MainWindow::slotAuth(Auth auth) {
+void MainWindow::slotAuth(const Auth &auth) {
     mTCPhandler->authOnServer(auth);
 }
 
@@ -163,7 +163,7 @@ void MainWindow::slotUpdateUserList(QStandardItemModel *model) {
 }
 
 // отправка на сервер настроек доступа
-void MainWindow::slotEditAccess(quint8 attr, QString date) {
+void MainWindow::slotEditAccess(quint8 attr, const QString &date) {
 
     // выбранные пользователи
     QModelIndexList indexes = ui->tableView_users
@@ -219,7 +219,7 @@ void MainWindow::slotOperationReady(bool resetPWD) {
 }
 
 // ошибки соединения
-void MainWindow::slotConnectError(QString errorMsg) {
+void MainWindow::slotConnectError(const QString &errorMsg) {
     mAccessDialog->close();                                             // закрытие диалогового окна доступа
     mProgressDialog->close();                                           // закрытие диалогового окна прогресса
     mProgressDialog->slotUpdateStatus(100, 100, "error", "error");      // закрытие диалогового окна прогресса - 2

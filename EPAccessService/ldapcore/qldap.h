@@ -2,6 +2,7 @@
 #define QLDAP_H
 
 #include <QString>
+#include <QTime>
 #include <QDebug>
 #include <QObject>
 #include <QTextStream>
@@ -48,7 +49,9 @@ public:
     void setSearchResult(QLdapEntryList *value);                            // установка контейнера для результатов поиска
     QString getLogin() const;                                               // получение логина из конфига
     QString getPassword() const;                                            // получение пароля из конфига
-    QString getCheckingTime() const;                                        // получение времени проверки доступа
+    //QString getCheckingTime() const;                                        // получение времени проверки доступа
+    QTime getCheckingTimeNight() const;                                     // получение ночного времени проверки доступа
+    QTime getCheckingTimeDay() const;                                       // получение дневного времени проверки доступа
     int getClientPort() const;                                              // получение порта для подключения
     QPair<QString, QStringList> getAttributes(const int index) const;       // получение пары атрибут - группы
 
@@ -60,7 +63,8 @@ private:
     QString mUsername = "";                                                 // имя доменного пользователя (админа)
     QString mPassword = "";                                                 // пароль
     QStringList mSearchDNList;                                              // список областей поиска пользователя
-    QString mCheckingTime = "";                                             // время проверки доступа
+    QTime mCheckingTimeNight;                                               // дневное время проверки доступа
+    QTime mCheckingTimeDay;                                                 // ночное время проверки доступа
     int mClientPort = 0;                                                    // порт для подключения мджера
     QPair<QString, QStringList> mAttributes[15];                            // пара атрибут - группы
 };

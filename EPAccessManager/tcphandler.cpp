@@ -154,12 +154,12 @@ void TCPhandler::slotReadSocket() {
 }
 
 // обработка ответа на запрос
-void TCPhandler::slotResponseHandler(QByteArray buffer) {
+void TCPhandler::slotResponseHandler(const QByteArray &buff) {
 
     // парсинг заголовка
-    QString header = buffer.mid(0,128);
+    QString header = buff.mid(0,128);
     QString respType = header.split(",")[0].split(":")[1];
-    buffer = buffer.mid(128);
+    QByteArray buffer = buff.mid(128);
     QString data = QString::fromStdString(buffer.toStdString());
 
     // ответ на запрос авторизации
@@ -366,6 +366,29 @@ void TCPhandler::slotInitSocket() {
     connect(mSocket, SIGNAL(disconnected()), this, SLOT(slotDiscardSocket()));
     connect(mSocket, SIGNAL(errorOccurred(QAbstractSocket::SocketError)),
                     this, SLOT(slotDisplayError(QAbstractSocket::SocketError)));
+
+    // настройка прокси для сокета
+    if (mAuth.proxy.type != 0) {
+        QNetworkProxy proxy;
+
+        if (mAuth.proxy.type == 1)
+            proxy.setType(QNetworkProxy::HttpProxy);
+        else if (mAuth.proxy.type == 2)
+            proxy.setType(QNetworkProxy::HttpCachingProxy);
+        else if (mAuth.proxy.type == 3)
+            proxy.setType(QNetworkProxy::Socks5Proxy);
+
+        proxy.setHostName(QString::fromStdString(mAuth.proxy.url));
+        proxy.setPort(mAuth.proxy.port);
+
+        if (mAuth.proxy.login != "" && mAuth.proxy.password != "") {
+            proxy.setUser(QString::fromStdString(mAuth.proxy.login));
+            proxy.setPassword(QString::fromStdString(mAuth.proxy.password));
+        }
+
+        QNetworkProxy::setApplicationProxy(proxy);
+        //mSocket->setProxy(proxy);
+    }
 }
 
 // обработка ошибок соединения

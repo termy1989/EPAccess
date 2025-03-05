@@ -139,10 +139,10 @@ Q_CONSTINIT const QMetaObject TCPhandler::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'signalUpdateUserStruct'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'signalUpdateAttributes'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QStringList, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QStringList &, std::false_type>,
         // method 'signalUpdateUserList'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QStandardItemModel *, std::false_type>,
@@ -153,11 +153,11 @@ Q_CONSTINIT const QMetaObject TCPhandler::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<quint16, std::false_type>,
         QtPrivate::TypeAndForceComplete<quint16, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'signalConnectError'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'slotDiscardSocket'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'slotInitSocket'
@@ -170,7 +170,7 @@ Q_CONSTINIT const QMetaObject TCPhandler::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'slotResponseHandler'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QByteArray, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QByteArray &, std::false_type>,
         // method 'slotAuth'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
@@ -250,14 +250,14 @@ void TCPhandler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             }
         }
         {
-            using _t = void (TCPhandler::*)(QString );
+            using _t = void (TCPhandler::*)(const QString & );
             if (_t _q_method = &TCPhandler::signalUpdateUserStruct; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 1;
                 return;
             }
         }
         {
-            using _t = void (TCPhandler::*)(QStringList );
+            using _t = void (TCPhandler::*)(const QStringList & );
             if (_t _q_method = &TCPhandler::signalUpdateAttributes; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 2;
                 return;
@@ -278,14 +278,14 @@ void TCPhandler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             }
         }
         {
-            using _t = void (TCPhandler::*)(quint16 , quint16 , QString , QString );
+            using _t = void (TCPhandler::*)(quint16 , quint16 , const QString & , const QString & );
             if (_t _q_method = &TCPhandler::signalUpdateProgress; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 5;
                 return;
             }
         }
         {
-            using _t = void (TCPhandler::*)(QString );
+            using _t = void (TCPhandler::*)(const QString & );
             if (_t _q_method = &TCPhandler::signalConnectError; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 6;
                 return;
@@ -331,14 +331,14 @@ void TCPhandler::signalAuthSuccess()
 }
 
 // SIGNAL 1
-void TCPhandler::signalUpdateUserStruct(QString _t1)
+void TCPhandler::signalUpdateUserStruct(const QString & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 
 // SIGNAL 2
-void TCPhandler::signalUpdateAttributes(QStringList _t1)
+void TCPhandler::signalUpdateAttributes(const QStringList & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
@@ -359,14 +359,14 @@ void TCPhandler::signalOperationReady(bool _t1)
 }
 
 // SIGNAL 5
-void TCPhandler::signalUpdateProgress(quint16 _t1, quint16 _t2, QString _t3, QString _t4)
+void TCPhandler::signalUpdateProgress(quint16 _t1, quint16 _t2, const QString & _t3, const QString & _t4)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))) };
     QMetaObject::activate(this, &staticMetaObject, 5, _a);
 }
 
 // SIGNAL 6
-void TCPhandler::signalConnectError(QString _t1)
+void TCPhandler::signalConnectError(const QString & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 6, _a);
