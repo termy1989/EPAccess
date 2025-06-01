@@ -9,8 +9,8 @@ QService::QService(const QString &filename) {
             this, SLOT(slotConnected(ldapcore::QLdap*)));
 
     // инициализация обработчика доступа
-    mAccessHandler = new AccessHandler();
-    connect(mAccessHandler, SIGNAL(signalConnectError()),
+    mHandler = new Handler();
+    connect(mHandler, SIGNAL(signalConnectError()),
                 this, SLOT(slotDisconnected()));
 
     // старт коннектора
@@ -19,8 +19,7 @@ QService::QService(const QString &filename) {
 
 // деструктор
 QService::~QService() {
-    delete mAccessHandler;
-    //delete mTCPhandler;
+    delete mHandler;
     delete mConnector;
 }
 
@@ -29,13 +28,13 @@ void QService::slotConnected(ldapcore::QLdap* ldap) {
     isConnected = true;                                     // флаг активного подключения к LDAP
     mLDAP = ldap;                                           // инициализация экземпляра LDAP
     mConnector->stop();                                     // прекращение работы коннектора
-    mAccessHandler->start(mLDAP);                           // старт обработчика доступа
+    mHandler->start(mLDAP);                           // старт обработчика доступа
 }
 
 // соединение потеряно
 void QService::slotDisconnected() {
     isConnected = false;                                    // флаг отсутствия подключения к LDAP
-    mAccessHandler->stop();                                 // остановка работы обработчика доступа
+    mHandler->stop();                                 // остановка работы обработчика доступа
     delete mLDAP;                                           // уничтожение экземпляра LDAP
     mConnector->start();                                    // старт коннектора для восстановления соединения с LDAP
 }
