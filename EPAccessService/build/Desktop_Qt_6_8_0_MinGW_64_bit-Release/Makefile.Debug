@@ -258,7 +258,6 @@ debug/moc_accesshandler.cpp: ../../accesshandler.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QObject \
 		../../ldapcore/qldap.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QString \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTime \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QDebug \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTextStream \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QProcess \
@@ -283,6 +282,10 @@ debug/moc_accesshandler.cpp: ../../accesshandler.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qhostaddress.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/QTcpSocket \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qtcpsocket.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QThread \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qthread.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdeadlinetimer.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qelapsedtimer.h \
 		debug/moc_predefs.h \
 		../../../../Qt/6.8.0/mingw_64/bin/moc.exe
 	C:\Qt\6.8.0\mingw_64\bin\moc.exe $(DEFINES) --include C:/Projects/EPAccessService/build/Desktop_Qt_6_8_0_MinGW_64_bit-Release/debug/moc_predefs.h -IC:/Qt/6.8.0/mingw_64/mkspecs/win32-g++ -IC:/Projects/EPAccessService -IC:/msys64/mingw64/include -IC:/Qt/6.8.0/mingw_64/include -IC:/Qt/6.8.0/mingw_64/include/QtNetwork -IC:/Qt/6.8.0/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\accesshandler.h -o debug\moc_accesshandler.cpp
@@ -394,11 +397,7 @@ debug/moc_connector.cpp: ../../connector.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qbasictimer.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QString \
 		../../ldapcore/qldap.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTime \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdatetime.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qcalendar.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qlocale.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qvariant.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QDebug \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdebug.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qtextstream.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qcontiguouscache.h \
@@ -410,14 +409,14 @@ debug/moc_connector.cpp: ../../connector.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qset.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qhash.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qvarlengtharray.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/q23utility.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QDebug \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTextStream \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QProcess \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qprocess.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qiodevice.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QSettings \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qsettings.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qvariant.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/q23utility.h \
 		../../../../msys64/mingw64/include/ldap.h \
 		../../../../msys64/mingw64/include/lber.h \
 		../../../../msys64/mingw64/include/lber_types.h \
@@ -552,7 +551,6 @@ debug/moc_qservice.cpp: ../../qservice.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/q23utility.h \
 		../../ldapcore/qldap.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QString \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTime \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QDebug \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTextStream \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QProcess \
@@ -577,6 +575,10 @@ debug/moc_qservice.cpp: ../../qservice.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qhostaddress.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/QTcpSocket \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qtcpsocket.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QThread \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qthread.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdeadlinetimer.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qelapsedtimer.h \
 		../../connector.h \
 		debug/moc_predefs.h \
 		../../../../Qt/6.8.0/mingw_64/bin/moc.exe
@@ -708,12 +710,12 @@ debug/moc_tcphandler.cpp: ../../tcphandler.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qtcpsocket.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qvariant.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/q23utility.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QThread \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qthread.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdeadlinetimer.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qelapsedtimer.h \
 		../../ldapcore/qldap.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QString \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTime \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdatetime.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qcalendar.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qlocale.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QDebug \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTextStream \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QProcess \
@@ -870,7 +872,6 @@ debug/accesshandler.o: ../../accesshandler.cpp ../../accesshandler.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QObject \
 		../../ldapcore/qldap.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QString \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTime \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QDebug \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTextStream \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QProcess \
@@ -895,6 +896,10 @@ debug/accesshandler.o: ../../accesshandler.cpp ../../accesshandler.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qhostaddress.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/QTcpSocket \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qtcpsocket.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QThread \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qthread.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdeadlinetimer.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qelapsedtimer.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QFile \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qfile.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qfiledevice.h
@@ -1007,11 +1012,7 @@ debug/connector.o: ../../connector.cpp ../../connector.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qbasictimer.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QString \
 		../../ldapcore/qldap.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTime \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdatetime.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qcalendar.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qlocale.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qvariant.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QDebug \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdebug.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qtextstream.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qcontiguouscache.h \
@@ -1023,14 +1024,14 @@ debug/connector.o: ../../connector.cpp ../../connector.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qset.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qhash.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qvarlengtharray.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/q23utility.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QDebug \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTextStream \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QProcess \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qprocess.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qiodevice.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QSettings \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qsettings.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qvariant.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/q23utility.h \
 		../../../../msys64/mingw64/include/ldap.h \
 		../../../../msys64/mingw64/include/lber.h \
 		../../../../msys64/mingw64/include/lber_types.h \
@@ -1210,6 +1211,7 @@ debug/main.o: ../../main.cpp ../../../../../../Qt/6.8.0/mingw_64/include/QtCore/
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qhostaddress.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/QTcpSocket \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qtcpsocket.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QThread \
 		../../connector.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\..\main.cpp
 
@@ -1290,17 +1292,19 @@ debug/qldap.o: ../../ldapcore/qldap.cpp ../../ldapcore/qldap.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qstringbuilder.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qstringconverter.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qstringconverter_base.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTime \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdatetime.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qcalendar.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qlocale.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qvariant.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QDebug \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdebug.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qtextstream.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qiodevicebase.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qscopedpointer.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qcontiguouscache.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qsharedpointer.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qshareddata.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qhashfunctions.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qsharedpointer_impl.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qmetatype.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdatastream.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qscopedpointer.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qiodevicebase.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qfloat16.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qhashfunctions.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qmath.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qalgorithms.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qiterable.h \
@@ -1311,12 +1315,6 @@ debug/qldap.o: ../../ldapcore/qldap.cpp ../../ldapcore/qldap.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qobjectdefs_impl.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qfunctionaltools_impl.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qscopeguard.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdebug.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qtextstream.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qcontiguouscache.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qsharedpointer.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qshareddata.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qsharedpointer_impl.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qlist.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qiterator.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qbytearraylist.h \
@@ -1327,19 +1325,19 @@ debug/qldap.o: ../../ldapcore/qldap.cpp ../../ldapcore/qldap.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qset.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qhash.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qvarlengtharray.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/q23utility.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QObject \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qobject.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qcoreevent.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qobject_impl.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qbindingstorage.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QDebug \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QObject \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTextStream \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QProcess \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qprocess.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qiodevice.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QSettings \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qsettings.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qvariant.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/q23utility.h \
 		../../../../msys64/mingw64/include/ldap.h \
 		../../../../msys64/mingw64/include/lber.h \
 		../../../../msys64/mingw64/include/lber_types.h \
@@ -1425,17 +1423,19 @@ debug/qldapuser.o: ../../ldapcore/qldapuser.cpp ../../ldapcore/qldapuser.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qstringbuilder.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qstringconverter.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qstringconverter_base.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTime \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdatetime.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qcalendar.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qlocale.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qvariant.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QDebug \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdebug.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qtextstream.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qiodevicebase.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qscopedpointer.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qcontiguouscache.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qsharedpointer.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qshareddata.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qhashfunctions.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qsharedpointer_impl.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qmetatype.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdatastream.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qscopedpointer.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qiodevicebase.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qfloat16.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qhashfunctions.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qmath.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qalgorithms.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qiterable.h \
@@ -1446,12 +1446,6 @@ debug/qldapuser.o: ../../ldapcore/qldapuser.cpp ../../ldapcore/qldapuser.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qobjectdefs_impl.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qfunctionaltools_impl.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qscopeguard.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdebug.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qtextstream.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qcontiguouscache.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qsharedpointer.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qshareddata.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qsharedpointer_impl.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qlist.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qiterator.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qbytearraylist.h \
@@ -1462,19 +1456,19 @@ debug/qldapuser.o: ../../ldapcore/qldapuser.cpp ../../ldapcore/qldapuser.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qset.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qhash.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qvarlengtharray.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/q23utility.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QObject \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qobject.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qcoreevent.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qobject_impl.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qbindingstorage.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QDebug \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QObject \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTextStream \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QProcess \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qprocess.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qiodevice.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QSettings \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qsettings.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qvariant.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/q23utility.h \
 		../../../../msys64/mingw64/include/ldap.h \
 		../../../../msys64/mingw64/include/lber.h \
 		../../../../msys64/mingw64/include/lber_types.h \
@@ -1607,7 +1601,6 @@ debug/qservice.o: ../../qservice.cpp ../../qservice.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/q23utility.h \
 		../../ldapcore/qldap.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QString \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTime \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QDebug \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTextStream \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QProcess \
@@ -1632,6 +1625,10 @@ debug/qservice.o: ../../qservice.cpp ../../qservice.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qhostaddress.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/QTcpSocket \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qtcpsocket.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QThread \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qthread.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdeadlinetimer.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qelapsedtimer.h \
 		../../connector.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\qservice.o ..\..\qservice.cpp
 
@@ -1761,12 +1758,12 @@ debug/tcphandler.o: ../../tcphandler.cpp ../../tcphandler.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qtcpsocket.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qvariant.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/q23utility.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QThread \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qthread.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdeadlinetimer.h \
+		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qelapsedtimer.h \
 		../../ldapcore/qldap.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QString \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTime \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdatetime.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qcalendar.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qlocale.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QDebug \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QTextStream \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QProcess \

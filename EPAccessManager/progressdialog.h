@@ -7,22 +7,19 @@ namespace Ui {
 class ProgressDialog;
 }
 
-// класс диалогового окна прогресса
 class ProgressDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit ProgressDialog(QWidget *parent = nullptr);     // конструктор
-    ~ProgressDialog();                                      // деструктор
+    explicit ProgressDialog(QWidget *parent = nullptr);
+    ~ProgressDialog();
 
 public slots:
-    void slotUpdateStatus(quint16, quint16,
-                          const QString&,
-                          const QString&);                  // обновление статуса работы
+    void slotUpdateStatus(int, int, QString, QString);          // обновление статуса работы
 
 private:
-    Ui::ProgressDialog *ui = nullptr;                       // экземпляр окна
+    Ui::ProgressDialog *ui;
     bool isStarted = false;                                 // статус работы окна
 };
 

@@ -14,7 +14,6 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     progressdialog.cpp \
-    proxydialog.cpp \
     tcphandler.cpp
 
 HEADERS += \
@@ -22,15 +21,13 @@ HEADERS += \
     logindialog.h \
     mainwindow.h \
     progressdialog.h \
-    proxydialog.h \
     tcphandler.h
 
 FORMS += \
     accessdialog.ui \
     logindialog.ui \
     mainwindow.ui \
-    progressdialog.ui \
-    proxydialog.ui
+    progressdialog.ui
 
 win32 {
         RC_FILE += ico.rc

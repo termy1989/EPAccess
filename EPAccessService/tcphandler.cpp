@@ -7,7 +7,8 @@ TCPhandler::TCPhandler(int port) {
     mServer = new QTcpServer();
 
     // включение сервера
-    if(mServer->listen(QHostAddress::Any, port)) {
+    if(mServer->listen(QHostAddress::Any, port))
+    {
         connect(mServer, SIGNAL(newConnection()),
                     this, SLOT(slotNewConnection()));
         isReady = true;
@@ -16,7 +17,8 @@ TCPhandler::TCPhandler(int port) {
     }
 
     // неудачное включение
-    else {
+    else
+    {
         qCritical() << "TCP:" << QString("Unable to start the server: %1.").arg(mServer->errorString());
         isReady = false;
     }
@@ -25,8 +27,8 @@ TCPhandler::TCPhandler(int port) {
 // деструктор
 TCPhandler::~TCPhandler() {
 
-    // отключение сокетов и сервера
-    foreach (QTcpSocket* socket, mConnections) {
+    foreach (QTcpSocket* socket, mConnections)
+    {
         socket->close();
         socket->deleteLater();
     }
@@ -40,38 +42,32 @@ bool TCPhandler::getReady() {
 }
 
 // отправка ответа на запрос авторизации
-void TCPhandler::responseAuth(QTcpSocket *socket,
-                              const QString &str) {
+void TCPhandler::responseAuth(QTcpSocket *socket, QString str) {
     slotSendResponse(socket, "auth", str);
 }
 
 // отправка структуры таблицы
-void TCPhandler::responseUpdStruct(QTcpSocket *socket,
-                                   const QString &str) {
+void TCPhandler::responseUpdStruct(QTcpSocket *socket, QString str) {
     slotSendResponse(socket, "update_s", str);
 }
 
 // отправка списка пользователей
-void TCPhandler::responseUpdUsers(QTcpSocket *socket,
-                                  const QString &str) {
+void TCPhandler::responseUpdUsers(QTcpSocket *socket, QString str) {
     slotSendResponse(socket, "update_u", str);
 }
 
-// отправка ответа на запрос настройки доступа
-void TCPhandler::responseEditAccess(QTcpSocket *socket,
-                                    const QString &str) {
+//
+void TCPhandler::responseEditAccess(QTcpSocket *socket, QString str) {
     slotSendResponse(socket, "access_edit", str);
 }
 
-// отправка ответа на запрос отключения доступа
-void TCPhandler::responseDelAccess(QTcpSocket *socket,
-                                   const QString &str) {
+//
+void TCPhandler::responseDelAccess(QTcpSocket *socket, QString str) {
     slotSendResponse(socket, "access_del", str);
 }
 
 // отправка пользователя со сброшенным паролем
-void TCPhandler::responseResetPwd(QTcpSocket *socket,
-                                  const QString &str) {
+void TCPhandler::responseResetPwd(QTcpSocket *socket, QString str) {
     slotSendResponse(socket, "reset_pwd", str);
 }
 
@@ -88,8 +84,7 @@ void TCPhandler::slotAppendToSocketList(QTcpSocket *socket) {
     connect(socket, SIGNAL(disconnected()), this, SLOT(slotDiscardSocket()));
     connect(socket, SIGNAL(errorOccurred(QAbstractSocket::SocketError)),
                         this, SLOT(slotDisplayError(QAbstractSocket::SocketError)));
-    qInfo() << QString("Client with sockd:%1 has just connected")
-                   .arg(socket->socketDescriptor());
+    qInfo() << QString("Client with sockd:%1 has just connected").arg(socket->socketDescriptor());
 }
 
 // чтение запроса от клиента
@@ -106,9 +101,9 @@ void TCPhandler::slotReadSocket() {
     // чтение потока данных
     socketStream.startTransaction();
     socketStream >> buffer;
-    if(!socketStream.commitTransaction()) {
-        QString message = QString("%1 - Waiting for more data to come...")
-                                            .arg(socket->socketDescriptor());
+    if(!socketStream.commitTransaction())
+    {
+        QString message = QString("%1 :: Waiting for more data to come...").arg(socket->socketDescriptor());
         qDebug() << message;
         return;
     }
@@ -118,12 +113,12 @@ void TCPhandler::slotReadSocket() {
 }
 
 // обработчик запросов от клиента
-void TCPhandler::slotRequestHandler(QTcpSocket* socket, const QByteArray &buff) {
+void TCPhandler::slotRequestHandler(QTcpSocket* socket, QByteArray buffer) {
 
     // чтение заголовка, определение типа запроса
-    QString header = buff.mid(0,128);
+    QString header = buffer.mid(0,128);
     QString reqType = header.split(",")[0].split(":")[1];
-    QByteArray buffer = buff.mid(128);
+    buffer = buffer.mid(128);
     QString str = QString::fromStdString(buffer.toStdString());
 
     // запрос авторизации
@@ -146,15 +141,12 @@ void TCPhandler::slotRequestHandler(QTcpSocket* socket, const QByteArray &buff) 
 }
 
 // отправка ответа на запрос
-void TCPhandler::slotSendResponse(QTcpSocket *socket,
-                                  const QString &head,
-                                  const QString &str) {
+void TCPhandler::slotSendResponse(QTcpSocket *socket, QString head, QString str) {
 
-    // сокет существует
-    if(socket) {
-
-        // сокет открыт
-        if(socket->isOpen()) {
+    if(socket)
+    {
+        if(socket->isOpen())
+        {
             // инициализация потока данных для
             QDataStream socketStream(socket);
             socketStream.setVersion(QDataStream::Qt_6_8);

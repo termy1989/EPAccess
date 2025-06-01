@@ -3,12 +3,10 @@ debug/logindialog.o
 debug/main.o
 debug/mainwindow.o
 debug/progressdialog.o
-debug/proxydialog.o
 debug/tcphandler.o
 debug/qrc_qmake_qmake_immediate.o
 debug/moc_accessdialog.o
 debug/moc_logindialog.o
 debug/moc_mainwindow.o
 debug/moc_progressdialog.o
-debug/moc_proxydialog.o
 debug/moc_tcphandler.o

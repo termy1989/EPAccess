@@ -118,11 +118,7 @@ void QLdap::readSettings() {
     mPassword = settings.value("Password", "password").toString();
     QString str = settings.value("SearchDN", "People").toString();
     mSearchDNList = str.split('|');
-    mCheckingTimeNight = QTime::fromString(settings.value("CheckingTime", "00:00").toString(), "hh:mm");
-    if (!mCheckingTimeNight.isValid())
-        mCheckingTimeNight.setHMS(0, 0, 0);
-    mCheckingTimeDay = mCheckingTimeNight.addSecs(3600 * 12);
-
+    mCheckingTime = settings.value("CheckingTime", "00:00").toString();
     mClientPort = settings.value("ClientPort", 0).toInt();
     settings.endGroup();
 
@@ -292,6 +288,11 @@ int QLdap::userSearchByLogin(const QString &login) {
     return this->userSearch("(sAMAccountName=" + login + ")");
 }
 
+// инициализация результата поиска, указатель передается извне
+void QLdap::setSearchResult(QLdapEntryList *value) {
+    mSearchResults = value;
+}
+
 // добавление пользователя в группу
 int QLdap::addUserToGroup(const QString &username, const QString &groupname) {
     QProcess p;
@@ -400,7 +401,8 @@ int QLdap::setAttributeToUser(const QString &username, const int attr, const QSt
 }
 
 // сброс пароля
-int QLdap::resetPassword(const QString &username) {
+int QLdap::resetPassword(const QString &username)
+{
     // процесс powershell
     QProcess p;
     QString path = "C:/Windows/system32/WindowsPowerShell/v1.0/powershell.exe";
@@ -470,7 +472,7 @@ int QLdap::resetPassword(const QString &username) {
                     out = p.readAllStandardOutput().trimmed();
                 }
 
-                // завершение сброса пароля
+                //
                 if (QString(out).isEmpty()) {
                     qDebug() << "Requirement to edit default password for user" << username;
                     qInfo() << "Complete reset password for user" << username;
@@ -499,42 +501,34 @@ int QLdap::resetPassword(const QString &username) {
 }
 
 // получение результатов поиска
-QLdapEntryList *QLdap::getSearchResult() const {
+QLdapEntryList *QLdap::getResult() const {
     return mSearchResults;
 }
 
-// инициализация результата поиска, указатель передается извне
-void QLdap::setSearchResult(QLdapEntryList *value) {
-    mSearchResults = value;
-}
-
 // получение логина
-QString QLdap::getLogin() const {
+QString QLdap::getLogin()
+{
     return mUsername;
 }
 
 // получение пароля
-QString QLdap::getPassword() const {
+QString QLdap::getPassword()
+{
     return mPassword;
 }
 
-// получение ночного времени проверки доступа
-QTime QLdap::getCheckingTimeNight() const {
-    return mCheckingTimeNight;
-}
-
-// получение дневного времени проверки доступа
-QTime QLdap::getCheckingTimeDay() const {
-    return mCheckingTimeDay;
+// получение времени проверки доступа
+QString QLdap::getCheckingTime() {
+    return mCheckingTime;
 }
 
 // получение порта для подключения
-int QLdap::getClientPort() const {
+int QLdap::getClientPort() {
     return mClientPort;
 }
 
 // получение пары атрибут - группы
-QPair<QString, QStringList> QLdap::getAttributes(const int index) const {
+QPair<QString, QStringList> QLdap::getAttributes(const int index) {
     return mAttributes[index - 1];
 }
 

@@ -1,0 +1,61 @@
+#ifndef TCPHANDLER_H
+#define TCPHANDLER_H
+
+#include <QObject>
+#include <QSet>
+#include <QTcpServer>
+#include <QTcpSocket>
+#include <QThread>
+#include "ldapcore/qldap.h"
+#include "ldapcore/qldapuser.h"
+
+// класс обработки запросов от менеджера
+class TCPhandler : public QObject
+{
+    Q_OBJECT
+
+public:
+    TCPhandler(ldapcore::QLdap*);                               // конструктор
+    ~TCPhandler();                                              // деструктор
+    bool getReady();                                            // статус - готовность
+
+signals:
+    void signalAddAccess();
+    void signalDelAccess();
+    void signalResetPwd();
+    void signalConnectError();                                  // сигнал об ошибке соединения
+
+private slots:
+    void slotNewConnection();                                   // подключение нового клиента
+    void slotAppendToSocketList(QTcpSocket*);                   // добавление нового клиента в список активных подключений
+    void slotReadSocket();                                      // чтение запроса от клиента
+    void slotRequestHandler(QTcpSocket*, QByteArray);           // обработка запроса
+
+    void slotAuthResponse(QTcpSocket*, QString);                // отправка ответа на запрос авторизации
+    void slotUpdStruct(QTcpSocket*, QString);                   // формирование структуры таблицы
+    void slotUpdStructResponse(QTcpSocket*);                    // отправка структуры таблицы
+    void slotUpdUsersResponse(QTcpSocket*);                     // отправка списка пользователей
+    void slotAddAccessResponse(QTcpSocket*, QString);           //
+    //void slotAddAccessResponse(QTcpSocket*, QString);           //
+    //void slotAddAccessResponse(QTcpSocket*, QString);           //
+
+
+
+
+
+    void slotSendResponse(QTcpSocket*, QString, QString);       // отправка ответа на запрос
+    void slotDiscardSocket();                                   // разрыв соединения с клиентом
+    void slotDisplayError(QAbstractSocket::SocketError);        // ошибка сети
+
+
+private:
+    ldapcore::QLdap *mLDAP = nullptr;                           // экземпляр LDAP
+    QTcpServer *mServer = nullptr;                              // сервер TCP
+    QSet<QTcpSocket*> mConnections;                             // список активных подключений
+    ldapcore::QLdapEntryList mUserList;                         // список пользователей
+    int mUserCount = 0;                                         // количество пользователей
+    int mUserIndex = 0;                                         // счетчик пользователей
+    bool isReady = false;                                       // флаг готовности обработчика
+};
+
+#endif // TCPHANDLER_H

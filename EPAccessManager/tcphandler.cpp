@@ -10,7 +10,6 @@ TCPhandler::TCPhandler() {
 // деструктор
 TCPhandler::~TCPhandler() {
 
-    // закрытие сокетов
     if (mSocket->isOpen())
         mSocket->close();
     if (mSocket != NULL)
@@ -19,35 +18,29 @@ TCPhandler::~TCPhandler() {
 }
 
 // подключение к серверу и авторизация
-void TCPhandler::authOnServer(const Auth &auth) {
+void TCPhandler::authOnServer(Auth auth) {
 
     // инициализация сокета
     slotInitSocket();
 
     // подключение к серверу
-    QStringList authList = QString::fromStdString(auth.url).split(":");
-    if (authList.size() == 2) {
-        mSocket->connectToHost(authList.at(0),authList.at(1).toInt());
+    mSocket->connectToHost(QString::fromStdString(auth.url).split(":").at(0),
+                           QString::fromStdString(auth.url).split(":").at(1).toInt());
 
-        // попытка соединения
-        if (mSocket->waitForConnected())
-            sendAuthReq(auth);
-    }
-
-    // ошибка авторизации
-    else
-        emit signalConnectError("Authorized failed!");
+    //
+    if (mSocket->waitForConnected())
+        sendAuthReq(auth);
 }
 
 // отправка запроса на авторизацию
-void TCPhandler::sendAuthReq(const Auth &auth) {
+void TCPhandler::sendAuthReq(Auth auth) {
     slotSendRequest("auth", QString::fromStdString(auth.login)
                             + " "
                             + QString::fromStdString(auth.password));
 }
 
 // отправка запроса на список пользователей
-void TCPhandler::sendUpdStructReq(const QString &str) {
+void TCPhandler::sendUpdStructReq(QString str) {
     slotSendRequest("update_s", str);
 }
 
@@ -57,55 +50,41 @@ void TCPhandler::sendUpdUsersReq() {
 }
 
 // отправка запроса на установку доступа
-void TCPhandler::sendEditAccessReq(const quint8 attribute,
-                                   const QStringList &userlist) {
+void TCPhandler::sendEditAccessReq(int attribute, QStringList userlist) {
 
-    // формирование списка пользователей и параметров доступа
     mUserList = userlist;
     QString attr = QString::number(attribute);
     QString value = userlist.at(0);
     mUserList.removeAt(0);
-
-    // сброс счетчика пользователей
     mUserIndex = 0;
-
-    // формирование и отправка строки
     QString req = attr + "|" + value + "|" + mUserList.at(mUserIndex);
+    //slotSendRequest("access_edit", req);
     slotEditAccess(req);
 }
 
-// отправка запроса на отключение доступа
-void TCPhandler::sendDelAccessReq(const quint8 attribute,
-                                  const QStringList &userlist)
+//
+void TCPhandler::sendDelAccessReq(int attribute, QStringList userlist)
 {
-
-    // формирование списка пользователей
     mUserList = userlist;
     QString attr = QString::number(attribute);
-
-    // сброс счетчика пользователей
     mUserIndex = 0;
-
-    // формирование и отправка строки
     QString req = attr + "|" + mUserList.at(mUserIndex);
+    //slotSendRequest("access_del", req);
     slotDelAccess(req);
 }
 
 // отправка запроса на сброс пароля
-void TCPhandler::sendResetReq(const QStringList &userlist) {
+void TCPhandler::sendResetReq(QStringList userlist) {
     mUserList = userlist;
     mUserIndex = 0;
     slotResetPassword();
 }
 
 // отправка запросов
-void TCPhandler::slotSendRequest(const QString &head,
-                                 const QString &data) {
+void TCPhandler::slotSendRequest(QString head, QString data) {
 
-    // сокет в наличии
     if(mSocket) {
 
-        // сокет открыт
         if(mSocket->isOpen()) {
 
             // формирование потока данных
@@ -147,19 +126,27 @@ void TCPhandler::slotReadSocket() {
     // передача данных клиенту от сервера
     socketStream.startTransaction();
     socketStream >> buffer;
+
     if(!socketStream.commitTransaction()) return;
+    /*{
+        QString message = QString("%1 :: Waiting for more data to come..")
+                                            .arg(mSocket->socketDescriptor());
+        qDebug() << message;
+        emit newMessage(message);
+        return;
+    }*/
 
     // обработка принятых данных
     slotResponseHandler(buffer);
 }
 
 // обработка ответа на запрос
-void TCPhandler::slotResponseHandler(const QByteArray &buff) {
+void TCPhandler::slotResponseHandler(QByteArray buffer) {
 
     // парсинг заголовка
-    QString header = buff.mid(0,128);
+    QString header = buffer.mid(0,128);
     QString respType = header.split(",")[0].split(":")[1];
-    QByteArray buffer = buff.mid(128);
+    buffer = buffer.mid(128);
     QString data = QString::fromStdString(buffer.toStdString());
 
     // ответ на запрос авторизации
@@ -180,7 +167,7 @@ void TCPhandler::slotResponseHandler(const QByteArray &buff) {
         slotEditAccess(data);
     }
 
-    // ответ на запрос отключения доступа
+    //
     else if (respType == "access_del") {
         mUserIndex++;
         slotDelAccess(data);
@@ -194,7 +181,7 @@ void TCPhandler::slotResponseHandler(const QByteArray &buff) {
 }
 
 // обработка авторизации
-void TCPhandler::slotAuth(const QString &data)
+void TCPhandler::slotAuth(QString data)
 {
     if (data == "success")
         emit signalAuthSuccess();
@@ -203,7 +190,7 @@ void TCPhandler::slotAuth(const QString &data)
 }
 
 // создание структуры таблицы
-void TCPhandler::slotCreateUserStruct(const QString &data) {
+void TCPhandler::slotCreateUserStruct(QString data) {
 
     // определение числа пользователей и обнуление счетчика пользователей
     mUserIndex = 0;
@@ -232,8 +219,8 @@ void TCPhandler::slotCreateUserStruct(const QString &data) {
     }
 }
 
-// запрос на информацию о пользователе
-void TCPhandler::slotUpdateUserModel(const QString &data) {
+// отправка основному окну готовой модели таблицы пользователей
+void TCPhandler::slotUpdateUserModel(QString data) {
 
     // проверка, сколько пользователей принято
     if (mUserIndex <= mUserCount) {
@@ -264,13 +251,12 @@ void TCPhandler::slotUpdateUserModel(const QString &data) {
     }
 }
 
-// запрос на редактирование доступа
-void TCPhandler::slotEditAccess(const QString &data)  {
+void TCPhandler::slotEditAccess(QString data)  {
 
     // проверка, сколько пользователей получили доступ
     if (mUserIndex <= mUserList.size()) {
 
-        // доступ получили все - завершение
+        //
         if (mUserIndex == mUserList.size()) {
             emit signalUpdateProgress(mUserIndex, mUserList.size(),
                                       mUserList.at(mUserIndex - 1),
@@ -281,7 +267,7 @@ void TCPhandler::slotEditAccess(const QString &data)  {
             emit signalOperationReady(false);
         }
 
-        // доступ получили не все - продолжение
+        //
         else {
             emit signalUpdateProgress(mUserIndex, mUserList.size(),
                                       mUserList.at(mUserIndex),
@@ -297,13 +283,13 @@ void TCPhandler::slotEditAccess(const QString &data)  {
     }
 }
 
-// запрос на отключение доступа
-void TCPhandler::slotDelAccess(const QString &data) {
+//
+void TCPhandler::slotDelAccess(QString data) {
 
     // проверка, сколько пользователей получили доступ
     if (mUserIndex <= mUserList.size()) {
 
-        // доступ отключен у всех - завершение
+        //
         if (mUserIndex == mUserList.size()) {
             emit signalUpdateProgress(mUserIndex, mUserList.size(),
                                       mUserList.at(mUserIndex - 1),
@@ -312,7 +298,7 @@ void TCPhandler::slotDelAccess(const QString &data) {
             emit signalOperationReady(false);
         }
 
-        // доступ отключени не у всех - продолжение
+        //
         else {
             emit signalUpdateProgress(mUserIndex, mUserList.size(),
                                       mUserList.at(mUserIndex),
@@ -331,7 +317,7 @@ void TCPhandler::slotResetPassword() {
     // проверка, сколько пользователей сбросили пароли
     if (mUserIndex <= mUserList.size()) {
 
-        // пароль сброшен у всех - завершение
+        //
         if (mUserIndex == mUserList.size()) {
             emit signalUpdateProgress(mUserIndex, mUserList.size(),
                                       mUserList.at(mUserIndex - 1),
@@ -340,7 +326,7 @@ void TCPhandler::slotResetPassword() {
             emit signalOperationReady(true);
         }
 
-        // пароль сброшен не у всех - продолжение
+        //
         else {
             emit signalUpdateProgress(mUserIndex, mUserList.size(),
                                       mUserList.at(mUserIndex),
@@ -366,29 +352,6 @@ void TCPhandler::slotInitSocket() {
     connect(mSocket, SIGNAL(disconnected()), this, SLOT(slotDiscardSocket()));
     connect(mSocket, SIGNAL(errorOccurred(QAbstractSocket::SocketError)),
                     this, SLOT(slotDisplayError(QAbstractSocket::SocketError)));
-
-    // настройка прокси для сокета
-    if (mAuth.proxy.type != 0) {
-        QNetworkProxy proxy;
-
-        if (mAuth.proxy.type == 1)
-            proxy.setType(QNetworkProxy::HttpProxy);
-        else if (mAuth.proxy.type == 2)
-            proxy.setType(QNetworkProxy::HttpCachingProxy);
-        else if (mAuth.proxy.type == 3)
-            proxy.setType(QNetworkProxy::Socks5Proxy);
-
-        proxy.setHostName(QString::fromStdString(mAuth.proxy.url));
-        proxy.setPort(mAuth.proxy.port);
-
-        if (mAuth.proxy.login != "" && mAuth.proxy.password != "") {
-            proxy.setUser(QString::fromStdString(mAuth.proxy.login));
-            proxy.setPassword(QString::fromStdString(mAuth.proxy.password));
-        }
-
-        QNetworkProxy::setApplicationProxy(proxy);
-        //mSocket->setProxy(proxy);
-    }
 }
 
 // обработка ошибок соединения

@@ -73,8 +73,8 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSAccessDialogENDCLASS[] = {
        7,    0,   65,    2, 0x08,   11 /* Private */,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::UChar, QMetaType::QString,    2,    2,
-    QMetaType::Void, QMetaType::UChar,    2,
+    QMetaType::Void, QMetaType::Int, QMetaType::QString,    2,    2,
+    QMetaType::Void, QMetaType::Int,    2,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QStringList,    2,
@@ -96,14 +96,14 @@ Q_CONSTINIT const QMetaObject AccessDialog::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<AccessDialog, std::true_type>,
         // method 'signalOk'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<quint8, std::false_type>,
-        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         // method 'signalDel'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<quint8, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'slotSetAttributes'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<const QStringList &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QStringList, std::false_type>,
         // method 'slotSendInfo'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'slotCheckBoxClicked'
@@ -121,8 +121,8 @@ void AccessDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         auto *_t = static_cast<AccessDialog *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->signalOk((*reinterpret_cast< std::add_pointer_t<quint8>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
-        case 1: _t->signalDel((*reinterpret_cast< std::add_pointer_t<quint8>>(_a[1]))); break;
+        case 0: _t->signalOk((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 1: _t->signalDel((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 2: _t->slotSetAttributes((*reinterpret_cast< std::add_pointer_t<QStringList>>(_a[1]))); break;
         case 3: _t->slotSendInfo(); break;
         case 4: _t->slotCheckBoxClicked((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
@@ -132,14 +132,14 @@ void AccessDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (AccessDialog::*)(quint8 , const QString & );
+            using _t = void (AccessDialog::*)(int , QString );
             if (_t _q_method = &AccessDialog::signalOk; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
             }
         }
         {
-            using _t = void (AccessDialog::*)(quint8 );
+            using _t = void (AccessDialog::*)(int );
             if (_t _q_method = &AccessDialog::signalDel; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 1;
                 return;
@@ -179,14 +179,14 @@ int AccessDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void AccessDialog::signalOk(quint8 _t1, const QString & _t2)
+void AccessDialog::signalOk(int _t1, QString _t2)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
-void AccessDialog::signalDel(quint8 _t1)
+void AccessDialog::signalDel(int _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
