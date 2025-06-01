@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QTcpSocket>
+#include <QNetworkProxy>
 #include <QStandardItemModel>
 #include "logindialog.h"
 
@@ -26,13 +27,14 @@ public:
 
 signals:
     void signalAuthSuccess();                               // сигнал с результатами авторизации
-    void signalUpdateUserStruct(QString);                   // сигнал о получении структуры таблицы
-    void signalUpdateAttributes(QStringList);               // cигнал о получении списка атрибутов
+    void signalUpdateUserStruct(const QString&);            // сигнал о получении структуры таблицы
+    void signalUpdateAttributes(const QStringList&);        // cигнал о получении списка атрибутов
     void signalUpdateUserList(QStandardItemModel*);         // сигнал о получении списка пользователей
     void signalOperationReady(bool);                        // сигнал о завершении сброса пароля
     void signalUpdateProgress(quint16, quint16,
-                              QString, QString);            // сигнал о текущем прогрессе выполнения задачи
-    void signalConnectError(QString);                       // сигнал об ошибке соединения
+                              const QString&,
+                              const QString&);              // сигнал о текущем прогрессе выполнения задачи
+    void signalConnectError(const QString&);                // сигнал об ошибке соединения
 
 public slots:
     void slotDiscardSocket();                               // отключение соединения
@@ -42,7 +44,7 @@ private slots:
     void slotSendRequest(const QString&,
                          const QString&);                   // отправка запроса
     void slotReadSocket();                                  // получение ответа от сервера
-    void slotResponseHandler(QByteArray);                   // обработка ответа от сервера
+    void slotResponseHandler(const QByteArray&);            // обработка ответа от сервера
 
     void slotAuth(const QString&);                          // обработка авторизации
     void slotCreateUserStruct(const QString&);              // создание структуры таблицы

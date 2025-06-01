@@ -38,7 +38,7 @@ private slots:
     void slotNewConnection();                                   // подключение нового клиента
     void slotAppendToSocketList(QTcpSocket*);                   // добавление нового клиента в список активных подключений
     void slotReadSocket();                                      // чтение запроса от клиента
-    void slotRequestHandler(QTcpSocket*, QByteArray);           // обработка запроса
+    void slotRequestHandler(QTcpSocket*, const QByteArray&);    // обработка запроса
     void slotSendResponse(QTcpSocket*, const QString&,
                                         const QString&);        // отправка ответа на запрос
     void slotDiscardSocket();                                   // разрыв соединения с клиентом

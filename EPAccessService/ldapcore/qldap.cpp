@@ -118,7 +118,11 @@ void QLdap::readSettings() {
     mPassword = settings.value("Password", "password").toString();
     QString str = settings.value("SearchDN", "People").toString();
     mSearchDNList = str.split('|');
-    mCheckingTime = settings.value("CheckingTime", "00:00").toString();
+    mCheckingTimeNight = QTime::fromString(settings.value("CheckingTime", "00:00").toString(), "hh:mm");
+    if (!mCheckingTimeNight.isValid())
+        mCheckingTimeNight.setHMS(0, 0, 0);
+    mCheckingTimeDay = mCheckingTimeNight.addSecs(3600 * 12);
+
     mClientPort = settings.value("ClientPort", 0).toInt();
     settings.endGroup();
 
@@ -514,9 +518,14 @@ QString QLdap::getPassword() const {
     return mPassword;
 }
 
-// получение времени проверки доступа
-QString QLdap::getCheckingTime() const {
-    return mCheckingTime;
+// получение ночного времени проверки доступа
+QTime QLdap::getCheckingTimeNight() const {
+    return mCheckingTimeNight;
+}
+
+// получение дневного времени проверки доступа
+QTime QLdap::getCheckingTimeDay() const {
+    return mCheckingTimeDay;
 }
 
 // получение порта для подключения

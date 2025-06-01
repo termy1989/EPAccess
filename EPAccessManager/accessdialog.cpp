@@ -7,6 +7,9 @@ AccessDialog::AccessDialog(QWidget *parent)
     , ui(new Ui::AccessDialog) {
     ui->setupUi(this);
     this->setFixedSize(300, 130);
+    #ifdef Q_OS_LINUX
+    this->setFixedSize(325, 145);
+    #endif
     ui->dateEdit_access->setDate(QDate::currentDate());
     connect(ui->buttonBox_main, SIGNAL(accepted()), this, SLOT(slotSendInfo()));
     connect(ui->checkBox_vip, SIGNAL(clicked(bool)), this, SLOT(slotCheckBoxClicked(bool)));

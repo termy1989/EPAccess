@@ -223,7 +223,8 @@ int AccessHandler::searchUsers(const QString str) {
 void AccessHandler::slotCheckAccess() {
 
     // доступ проверяется в опр. время и в случае, если первая пока подключения к LDAP была неудачная
-    if (mLDAP->getCheckingTime() == QTime::currentTime().toString("hh:mm")
+    if (mLDAP->getCheckingTimeNight() == QTime::fromString(QTime::currentTime().toString("hh:mm"))
+        || mLDAP->getCheckingTimeDay() == QTime::fromString(QTime::currentTime().toString("hh:mm"))
         || isRetryCheckingAccess) {
 
         // первая или вторая попытка

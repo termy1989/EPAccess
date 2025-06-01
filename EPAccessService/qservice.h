@@ -13,7 +13,7 @@ class QService : public QObject
     Q_OBJECT
 
 public:
-    QService(QString str);                      // конструктор
+    QService(const QString &str);               // конструктор
     ~QService();                                // деструктор
     void start();                               // запуск службы
 
@@ -24,7 +24,6 @@ private slots:
     void slotDisconnected();                    // действие при ошибке соединения
 
 private:
-    //TCPhandler *mTCPhandler = nullptr;          // обработчик tcp-запросов
     AccessHandler *mAccessHandler = nullptr;    // обработчик временного доступа
     Connector *mConnector = nullptr;            // устанновщик соединения
     ldapcore::QLdap *mLDAP = nullptr;           // экземпляр LDAP

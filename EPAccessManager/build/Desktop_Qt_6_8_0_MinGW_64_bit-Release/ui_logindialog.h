@@ -18,6 +18,7 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
 
 QT_BEGIN_NAMESPACE
 
@@ -25,73 +26,79 @@ class Ui_LoginDialog
 {
 public:
     QGridLayout *gridLayout;
-    QLabel *label_url;
-    QLineEdit *lineEdit_url;
-    QLabel *label_login;
-    QLineEdit *lineEdit_login;
-    QLabel *label_password;
-    QLineEdit *lineEdit_password;
-    QLabel *label_advanced;
-    QCheckBox *checkBox_save;
     QDialogButtonBox *buttonBox;
+    QLineEdit *lineEdit_url;
+    QLineEdit *lineEdit_login;
+    QPushButton *proxyButton;
+    QLineEdit *lineEdit_password;
+    QCheckBox *checkBox_save;
+    QLabel *label_url;
+    QLabel *label_login;
+    QLabel *label_password;
+    QLabel *label_advanced;
 
     void setupUi(QDialog *LoginDialog)
     {
         if (LoginDialog->objectName().isEmpty())
             LoginDialog->setObjectName("LoginDialog");
-        LoginDialog->resize(325, 155);
+        LoginDialog->resize(336, 155);
         gridLayout = new QGridLayout(LoginDialog);
         gridLayout->setObjectName("gridLayout");
-        label_url = new QLabel(LoginDialog);
-        label_url->setObjectName("label_url");
-        label_url->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+        buttonBox = new QDialogButtonBox(LoginDialog);
+        buttonBox->setObjectName("buttonBox");
+        buttonBox->setStandardButtons(QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok);
 
-        gridLayout->addWidget(label_url, 0, 0, 1, 1);
+        gridLayout->addWidget(buttonBox, 5, 1, 1, 1);
 
         lineEdit_url = new QLineEdit(LoginDialog);
         lineEdit_url->setObjectName("lineEdit_url");
 
-        gridLayout->addWidget(lineEdit_url, 0, 1, 1, 1);
-
-        label_login = new QLabel(LoginDialog);
-        label_login->setObjectName("label_login");
-        label_login->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
-
-        gridLayout->addWidget(label_login, 1, 0, 1, 1);
+        gridLayout->addWidget(lineEdit_url, 1, 1, 1, 1);
 
         lineEdit_login = new QLineEdit(LoginDialog);
         lineEdit_login->setObjectName("lineEdit_login");
 
-        gridLayout->addWidget(lineEdit_login, 1, 1, 1, 1);
+        gridLayout->addWidget(lineEdit_login, 2, 1, 1, 1);
 
-        label_password = new QLabel(LoginDialog);
-        label_password->setObjectName("label_password");
-        label_password->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+        proxyButton = new QPushButton(LoginDialog);
+        proxyButton->setObjectName("proxyButton");
 
-        gridLayout->addWidget(label_password, 2, 0, 1, 1);
+        gridLayout->addWidget(proxyButton, 5, 0, 1, 1);
 
         lineEdit_password = new QLineEdit(LoginDialog);
         lineEdit_password->setObjectName("lineEdit_password");
         lineEdit_password->setEchoMode(QLineEdit::EchoMode::Password);
 
-        gridLayout->addWidget(lineEdit_password, 2, 1, 1, 1);
-
-        label_advanced = new QLabel(LoginDialog);
-        label_advanced->setObjectName("label_advanced");
-
-        gridLayout->addWidget(label_advanced, 3, 0, 1, 1);
+        gridLayout->addWidget(lineEdit_password, 3, 1, 1, 1);
 
         checkBox_save = new QCheckBox(LoginDialog);
         checkBox_save->setObjectName("checkBox_save");
 
-        gridLayout->addWidget(checkBox_save, 3, 1, 1, 1);
+        gridLayout->addWidget(checkBox_save, 4, 1, 1, 1);
 
-        buttonBox = new QDialogButtonBox(LoginDialog);
-        buttonBox->setObjectName("buttonBox");
-        buttonBox->setOrientation(Qt::Orientation::Horizontal);
-        buttonBox->setStandardButtons(QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok);
+        label_url = new QLabel(LoginDialog);
+        label_url->setObjectName("label_url");
+        label_url->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
 
-        gridLayout->addWidget(buttonBox, 4, 0, 1, 2);
+        gridLayout->addWidget(label_url, 1, 0, 1, 1);
+
+        label_login = new QLabel(LoginDialog);
+        label_login->setObjectName("label_login");
+        label_login->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        gridLayout->addWidget(label_login, 2, 0, 1, 1);
+
+        label_password = new QLabel(LoginDialog);
+        label_password->setObjectName("label_password");
+        label_password->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        gridLayout->addWidget(label_password, 3, 0, 1, 1);
+
+        label_advanced = new QLabel(LoginDialog);
+        label_advanced->setObjectName("label_advanced");
+        label_advanced->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+
+        gridLayout->addWidget(label_advanced, 4, 0, 1, 1);
 
 
         retranslateUi(LoginDialog);
@@ -104,11 +111,12 @@ public:
     void retranslateUi(QDialog *LoginDialog)
     {
         LoginDialog->setWindowTitle(QCoreApplication::translate("LoginDialog", "\320\220\320\262\321\202\320\276\321\200\320\270\320\267\320\260\321\206\320\270\321\217", nullptr));
+        proxyButton->setText(QCoreApplication::translate("LoginDialog", "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\260 \320\277\321\200\320\276\320\272\321\201\320\270", nullptr));
+        checkBox_save->setText(QCoreApplication::translate("LoginDialog", "\320\227\320\260\320\277\320\276\320\274\320\275\320\270\321\202\321\214 \320\275\320\260 \321\215\321\202\320\276\320\274 \320\272\320\276\320\274\320\277\321\214\321\216\321\202\320\265\321\200\320\265", nullptr));
         label_url->setText(QCoreApplication::translate("LoginDialog", "URL:Port", nullptr));
         label_login->setText(QCoreApplication::translate("LoginDialog", "\320\233\320\276\320\263\320\270\320\275", nullptr));
         label_password->setText(QCoreApplication::translate("LoginDialog", "\320\237\320\260\321\200\320\276\320\273\321\214", nullptr));
         label_advanced->setText(QCoreApplication::translate("LoginDialog", "\320\224\320\276\320\277\320\276\320\273\320\275\320\270\321\202\320\265\320\273\321\214\320\275\320\276", nullptr));
-        checkBox_save->setText(QCoreApplication::translate("LoginDialog", "\320\227\320\260\320\277\320\276\320\274\320\275\320\270\321\202\321\214 \320\275\320\260 \321\215\321\202\320\276\320\274 \320\272\320\276\320\274\320\277\321\214\321\216\321\202\320\265\321\200\320\265", nullptr));
     } // retranslateUi
 
 };

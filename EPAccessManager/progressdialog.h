@@ -18,7 +18,8 @@ public:
 
 public slots:
     void slotUpdateStatus(quint16, quint16,
-                          QString, QString);                // обновление статуса работы
+                          const QString&,
+                          const QString&);                  // обновление статуса работы
 
 private:
     Ui::ProgressDialog *ui = nullptr;                       // экземпляр окна

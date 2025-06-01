@@ -25,12 +25,12 @@ public:
 
 private slots:
     void slotClickButton(bool);                     // нажатие на кнопки доступа и сброса
-    void slotAuth(Auth);                            // авторизация на сервере
+    void slotAuth(const Auth&);                     // авторизация на сервере
     void slotUpdateUserList(QStandardItemModel*);   // обновление списка пользователей
-    void slotEditAccess(quint8, QString);           // отправка на сервер настроек доступа
+    void slotEditAccess(quint8, const QString&);    // отправка на сервер настроек доступа
     void slotDelAccess(quint8);                     // отправка запроса на отключение доступа
     void slotOperationReady(bool);                  // завершение операции с доступом или паролем
-    void slotConnectError(QString);                 // обработка ошибки соединения
+    void slotConnectError(const QString&);          // обработка ошибки соединения
 
     // обработчики нажатия кнопок
     void on_pushButton_search_clicked();

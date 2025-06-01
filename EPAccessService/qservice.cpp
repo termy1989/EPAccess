@@ -1,7 +1,7 @@
 #include "qservice.h"
 
 // конструктор
-QService::QService(QString filename) {
+QService::QService(const QString &filename) {
 
     // инициализация коннектора
     mConnector = new Connector(filename);

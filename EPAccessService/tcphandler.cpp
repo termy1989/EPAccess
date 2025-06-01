@@ -118,12 +118,12 @@ void TCPhandler::slotReadSocket() {
 }
 
 // обработчик запросов от клиента
-void TCPhandler::slotRequestHandler(QTcpSocket* socket, QByteArray buffer) {
+void TCPhandler::slotRequestHandler(QTcpSocket* socket, const QByteArray &buff) {
 
     // чтение заголовка, определение типа запроса
-    QString header = buffer.mid(0,128);
+    QString header = buff.mid(0,128);
     QString reqType = header.split(",")[0].split(":")[1];
-    buffer = buffer.mid(128);
+    QByteArray buffer = buff.mid(128);
     QString str = QString::fromStdString(buffer.toStdString());
 
     // запрос авторизации
