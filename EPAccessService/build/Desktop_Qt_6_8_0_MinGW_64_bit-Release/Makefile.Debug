@@ -282,10 +282,6 @@ debug/moc_accesshandler.cpp: ../../accesshandler.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qhostaddress.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/QTcpSocket \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qtcpsocket.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QThread \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qthread.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdeadlinetimer.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qelapsedtimer.h \
 		debug/moc_predefs.h \
 		../../../../Qt/6.8.0/mingw_64/bin/moc.exe
 	C:\Qt\6.8.0\mingw_64\bin\moc.exe $(DEFINES) --include C:/Projects/EPAccessService/build/Desktop_Qt_6_8_0_MinGW_64_bit-Release/debug/moc_predefs.h -IC:/Qt/6.8.0/mingw_64/mkspecs/win32-g++ -IC:/Projects/EPAccessService -IC:/msys64/mingw64/include -IC:/Qt/6.8.0/mingw_64/include -IC:/Qt/6.8.0/mingw_64/include/QtNetwork -IC:/Qt/6.8.0/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\accesshandler.h -o debug\moc_accesshandler.cpp
@@ -575,10 +571,6 @@ debug/moc_qservice.cpp: ../../qservice.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qhostaddress.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/QTcpSocket \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qtcpsocket.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QThread \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qthread.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdeadlinetimer.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qelapsedtimer.h \
 		../../connector.h \
 		debug/moc_predefs.h \
 		../../../../Qt/6.8.0/mingw_64/bin/moc.exe
@@ -710,10 +702,6 @@ debug/moc_tcphandler.cpp: ../../tcphandler.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qtcpsocket.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qvariant.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/q23utility.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QThread \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qthread.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdeadlinetimer.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qelapsedtimer.h \
 		../../ldapcore/qldap.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QString \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QDebug \
@@ -896,10 +884,6 @@ debug/accesshandler.o: ../../accesshandler.cpp ../../accesshandler.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qhostaddress.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/QTcpSocket \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qtcpsocket.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QThread \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qthread.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdeadlinetimer.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qelapsedtimer.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QFile \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qfile.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qfiledevice.h
@@ -1211,7 +1195,6 @@ debug/main.o: ../../main.cpp ../../../../../../Qt/6.8.0/mingw_64/include/QtCore/
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qhostaddress.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/QTcpSocket \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qtcpsocket.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QThread \
 		../../connector.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\..\main.cpp
 
@@ -1625,10 +1608,6 @@ debug/qservice.o: ../../qservice.cpp ../../qservice.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qhostaddress.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/QTcpSocket \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qtcpsocket.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QThread \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qthread.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdeadlinetimer.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qelapsedtimer.h \
 		../../connector.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\qservice.o ..\..\qservice.cpp
 
@@ -1758,10 +1737,6 @@ debug/tcphandler.o: ../../tcphandler.cpp ../../tcphandler.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtNetwork/qtcpsocket.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qvariant.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/q23utility.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QThread \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qthread.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qdeadlinetimer.h \
-		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/qelapsedtimer.h \
 		../../ldapcore/qldap.h \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QString \
 		../../../../../../Qt/6.8.0/mingw_64/include/QtCore/QDebug \

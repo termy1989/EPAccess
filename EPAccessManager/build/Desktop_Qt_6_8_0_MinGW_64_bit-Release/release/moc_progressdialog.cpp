@@ -61,7 +61,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSProgressDialogENDCLASS[] = {
        1,    4,   20,    2, 0x0a,    1 /* Public */,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::QString, QMetaType::QString,    2,    2,    2,    2,
+    QMetaType::Void, QMetaType::UShort, QMetaType::UShort, QMetaType::QString, QMetaType::QString,    2,    2,    2,    2,
 
        0        // eod
 };
@@ -77,8 +77,8 @@ Q_CONSTINIT const QMetaObject ProgressDialog::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<ProgressDialog, std::true_type>,
         // method 'slotUpdateStatus'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>,
-        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<quint16, std::false_type>,
+        QtPrivate::TypeAndForceComplete<quint16, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>
     >,
@@ -91,7 +91,7 @@ void ProgressDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         auto *_t = static_cast<ProgressDialog *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->slotUpdateStatus((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4]))); break;
+        case 0: _t->slotUpdateStatus((*reinterpret_cast< std::add_pointer_t<quint16>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint16>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4]))); break;
         default: ;
         }
     }

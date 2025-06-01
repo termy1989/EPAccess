@@ -159,8 +159,8 @@ Q_CONSTINIT const QMetaObject TCPhandler::staticMetaObject = { {
         // method 'slotSendResponse'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QTcpSocket *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'slotDiscardSocket'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'slotDisplayError'

@@ -6,7 +6,6 @@ ProgressDialog::ProgressDialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::ProgressDialog) {
     ui->setupUi(this);
-
     connect(this, &ProgressDialog::rejected, this, [=](){if(isStarted) show();});
 }
 
@@ -15,15 +14,14 @@ ProgressDialog::~ProgressDialog() {
     delete ui;
 }
 
-void ProgressDialog::slotUpdateStatus(int progress,
-                                        int sum,
+// обновление статуса работы
+void ProgressDialog::slotUpdateStatus(quint16 progress,
+                                        quint16 sum,
                                         QString user,
                                         QString stage) {
 
     // запуск окна
     if (!isStarted) {
-        //this->show();
-        //ui->progressBar->setMaximum(sum);
         ui->progressBar->setMinimum(0);
         ui->progressBar->setValue(0);
         isStarted = true;

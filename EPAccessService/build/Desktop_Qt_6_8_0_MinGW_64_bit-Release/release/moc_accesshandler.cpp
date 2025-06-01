@@ -40,6 +40,7 @@ constexpr auto qt_meta_stringdata_CLASSAccessHandlerENDCLASS = QtMocHelpers::str
     "",
     "signalTimerStart",
     "signalTimerStop",
+    "slotCheckAccess",
     "slotAuth",
     "QTcpSocket*",
     "slotUpdStruct",
@@ -50,8 +51,7 @@ constexpr auto qt_meta_stringdata_CLASSAccessHandlerENDCLASS = QtMocHelpers::str
     "slotDelAccess",
     "slotDelAccessSingle",
     "slotResetPwd",
-    "slotResetPwdSingle",
-    "slotCheckAccess"
+    "slotResetPwdSingle"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -77,17 +77,17 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSAccessHandlerENDCLASS[] = {
        4,    0,  102,    2, 0x06,    4 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       5,    2,  103,    2, 0x08,    5 /* Private */,
-       7,    2,  108,    2, 0x08,    8 /* Private */,
-       8,    1,  113,    2, 0x08,   11 /* Private */,
-       9,    1,  116,    2, 0x08,   13 /* Private */,
-      10,    2,  119,    2, 0x08,   15 /* Private */,
-      11,    2,  124,    2, 0x08,   18 /* Private */,
-      12,    2,  129,    2, 0x08,   21 /* Private */,
-      13,    2,  134,    2, 0x08,   24 /* Private */,
-      14,    2,  139,    2, 0x08,   27 /* Private */,
-      15,    1,  144,    2, 0x08,   30 /* Private */,
-      16,    0,  147,    2, 0x08,   32 /* Private */,
+       5,    0,  103,    2, 0x08,    5 /* Private */,
+       6,    2,  104,    2, 0x08,    6 /* Private */,
+       8,    2,  109,    2, 0x08,    9 /* Private */,
+       9,    1,  114,    2, 0x08,   12 /* Private */,
+      10,    1,  117,    2, 0x08,   14 /* Private */,
+      11,    2,  120,    2, 0x08,   16 /* Private */,
+      12,    2,  125,    2, 0x08,   19 /* Private */,
+      13,    2,  130,    2, 0x08,   22 /* Private */,
+      14,    2,  135,    2, 0x08,   25 /* Private */,
+      15,    2,  140,    2, 0x08,   28 /* Private */,
+      16,    1,  145,    2, 0x08,   31 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -95,17 +95,17 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSAccessHandlerENDCLASS[] = {
     QMetaType::Void,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 6, QMetaType::QString,    2,    2,
-    QMetaType::Void, 0x80000000 | 6, QMetaType::QString,    2,    2,
-    QMetaType::Void, 0x80000000 | 6,    2,
-    QMetaType::Void, 0x80000000 | 6,    2,
-    QMetaType::Void, 0x80000000 | 6, QMetaType::QString,    2,    2,
-    QMetaType::Void, 0x80000000 | 6, QMetaType::QString,    2,    2,
-    QMetaType::Void, 0x80000000 | 6, QMetaType::QString,    2,    2,
-    QMetaType::Void, 0x80000000 | 6, QMetaType::QString,    2,    2,
-    QMetaType::Void, 0x80000000 | 6, QMetaType::QString,    2,    2,
-    QMetaType::Void, 0x80000000 | 6,    2,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 7, QMetaType::QString,    2,    2,
+    QMetaType::Void, 0x80000000 | 7, QMetaType::QString,    2,    2,
+    QMetaType::Void, 0x80000000 | 7,    2,
+    QMetaType::Void, 0x80000000 | 7,    2,
+    QMetaType::Void, 0x80000000 | 7, QMetaType::QString,    2,    2,
+    QMetaType::Void, 0x80000000 | 7, QMetaType::QString,    2,    2,
+    QMetaType::Void, 0x80000000 | 7, QMetaType::QString,    2,    2,
+    QMetaType::Void, 0x80000000 | 7, QMetaType::QString,    2,    2,
+    QMetaType::Void, 0x80000000 | 7, QMetaType::QString,    2,    2,
+    QMetaType::Void, 0x80000000 | 7,    2,
 
        0        // eod
 };
@@ -126,14 +126,16 @@ Q_CONSTINIT const QMetaObject AccessHandler::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'signalTimerStop'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'slotCheckAccess'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'slotAuth'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QTcpSocket *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'slotUpdStruct'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QTcpSocket *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'slotStructToStr'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QTcpSocket *, std::false_type>,
@@ -143,28 +145,26 @@ Q_CONSTINIT const QMetaObject AccessHandler::staticMetaObject = { {
         // method 'slotEditAccess'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QTcpSocket *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'slotEditAccessSingle'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QTcpSocket *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'slotDelAccess'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QTcpSocket *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'slotDelAccessSingle'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QTcpSocket *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'slotResetPwd'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QTcpSocket *, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'slotResetPwdSingle'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<QTcpSocket *, std::false_type>,
-        // method 'slotCheckAccess'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<QTcpSocket *, std::false_type>
     >,
     nullptr
 } };
@@ -178,29 +178,22 @@ void AccessHandler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 0: _t->signalConnectError(); break;
         case 1: _t->signalTimerStart((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 2: _t->signalTimerStop(); break;
-        case 3: _t->slotAuth((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
-        case 4: _t->slotUpdStruct((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
-        case 5: _t->slotStructToStr((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1]))); break;
-        case 6: _t->slotUpdUsers((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1]))); break;
-        case 7: _t->slotEditAccess((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
-        case 8: _t->slotEditAccessSingle((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
-        case 9: _t->slotDelAccess((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
-        case 10: _t->slotDelAccessSingle((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
-        case 11: _t->slotResetPwd((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
-        case 12: _t->slotResetPwdSingle((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1]))); break;
-        case 13: _t->slotCheckAccess(); break;
+        case 3: _t->slotCheckAccess(); break;
+        case 4: _t->slotAuth((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 5: _t->slotUpdStruct((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 6: _t->slotStructToStr((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1]))); break;
+        case 7: _t->slotUpdUsers((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1]))); break;
+        case 8: _t->slotEditAccess((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 9: _t->slotEditAccessSingle((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 10: _t->slotDelAccess((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 11: _t->slotDelAccessSingle((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 12: _t->slotResetPwd((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 13: _t->slotResetPwdSingle((*reinterpret_cast< std::add_pointer_t<QTcpSocket*>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-        case 3:
-            switch (*reinterpret_cast<int*>(_a[1])) {
-            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-            case 0:
-                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QTcpSocket* >(); break;
-            }
-            break;
         case 4:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
@@ -258,6 +251,13 @@ void AccessHandler::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
             }
             break;
         case 12:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QTcpSocket* >(); break;
+            }
+            break;
+        case 13:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
             case 0:
