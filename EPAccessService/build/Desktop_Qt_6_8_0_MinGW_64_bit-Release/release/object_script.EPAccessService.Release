@@ -1,6 +1,5 @@
 release/accesshandler.o
 release/connector.o
-release/handler.o
 release/main.o
 release/qldap.o
 release/qldapuser.o
@@ -8,6 +7,5 @@ release/qservice.o
 release/tcphandler.o
 release/moc_accesshandler.o
 release/moc_connector.o
-release/moc_handler.o
 release/moc_qservice.o
 release/moc_tcphandler.o

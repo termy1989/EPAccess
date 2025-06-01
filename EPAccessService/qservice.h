@@ -2,7 +2,7 @@
 #define QSERVICE_H
 
 #include <QObject>
-#include "handler.h"
+#include "accesshandler.h"
 #include "connector.h"
 //#include "tcphandler.h"
 #include "ldapcore/qldap.h"
@@ -24,7 +24,7 @@ private slots:
     void slotDisconnected();                    // действие при ошибке соединения
 
 private:
-    Handler *mHandler = nullptr;    // обработчик временного доступа
+    AccessHandler *mAccessHandler = nullptr;    // обработчик временного доступа
     Connector *mConnector = nullptr;            // устанновщик соединения
     ldapcore::QLdap *mLDAP = nullptr;           // экземпляр LDAP
     bool isConnected = false;                   // флаг соединения с LDAP

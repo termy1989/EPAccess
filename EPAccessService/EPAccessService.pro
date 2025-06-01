@@ -9,7 +9,6 @@ CONFIG += c++17 cmdline
 SOURCES += \
         accesshandler.cpp \
         connector.cpp \
-        handler.cpp \
         main.cpp \
         ldapcore/qldap.cpp \
         ldapcore/qldapuser.cpp \
@@ -28,7 +27,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     accesshandler.h \
     connector.h \
-    handler.h \
     ldapcore/qldap.h \
     ldapcore/qldapuser.h \
     qservice.h \
